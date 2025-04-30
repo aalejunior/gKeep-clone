@@ -1,15 +1,38 @@
 body {
   background: #2c2e31 !important;
-  color: #e8eaed;
   font-family: "Inter", system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 #root {
-  max-width: 1200px;
   margin: 0 auto;
+  max-width: 1200px;
   padding: 2rem;
 }
 .text-light {
   color: #e8eaed;
+}
+.bg-light {
+  background-color: #e8eaed !important;
+}
+.light-border {
+  border: 1px solid #ffffff4d !important;
+}
+
+.card-form {
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+.card-form input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #e8eaed;
+  outline: none;
+}
+.card-form button {
+  background-color: #3c3c3c;
+  border: none;
+  line-height: 0;
+  border-radius: 8px;
 }
 
 .card-element {
@@ -17,8 +40,8 @@ body {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
 }
 .card-title {
-  font-weight: 450;
-  font-size: 1rem;
+  font-weight: 500;
+  font-size: 1.125rem;
   line-height: 1.5rem;
   padding-top: 0.9rem;
 }
@@ -26,25 +49,17 @@ body {
 .card-element:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
-.light-border {
-  border: 1px solid #ffffff4d !important;
-}
-
-.card-title {
-  font-weight: 500;
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
-}
 
 .card-description {
   font-size: 1rem;
-  color: #ccc;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
 }
 
 .btn-remove {
-  position: absolute;
   top: 8px;
   right: 8px;
+  line-height: 0;
   background: #555;
   color: white;
   border: none;
@@ -52,40 +67,29 @@ body {
   width: 24px;
   height: 24px;
   font-size: 14px;
+  transition: all 0.3s ease;
   cursor: pointer;
 }
 .btn-remove:hover {
-  background: #ffffff;
-  color: #000000;
+  background: #ff1c1c;
+  color: #fff;
 }
-
-.card-gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1rem;
-  padding: 1rem;
+.btn-save {
+  background-color: rgb(142, 224, 156) !important;
 }
-
-.card-form {
-  border-radius: 8px;
-  padding: 1rem;
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-  margin-bottom: 2rem;
-}
-.card-form input {
-  flex: 1;
-  background: transparent;
-  border: none;
-  color: white;
-  font-size: 1rem;
+.editable-input {
+  background-color: transparent;
+  border: 1px solid #ffffff4d;
+  border-radius: 4px;
+  color: #e8eaed;
+  padding: 0.5rem;
+  resize: vertical;
   outline: none;
 }
-.card-form button {
-  background-color: #3c3c3c;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
+
+.editable-input:focus {
+  background-color: transparent !important;
+  border-color: #ffffff80 !important;
+  box-shadow: none !important;
+  outline: none !important;
 }

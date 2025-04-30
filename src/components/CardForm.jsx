@@ -6,7 +6,7 @@ const CardForm = ({ addCard }) => {
 
   const handleSubmit = e => {
     e.preventDefault()
-    if (!title) {
+    if (!description) {
       alert("Digite uma nota")
       return
     }
@@ -16,14 +16,20 @@ const CardForm = ({ addCard }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="card-form col-12 col-lg-8 mb-4">
+    <form
+      onSubmit={handleSubmit}
+      className="card-form d-flex light-border rounded-3 mb-4"
+    >
       <input
+        className="ms-2 flex-grow-1 no-focus-bg py-3"
         type="text"
         placeholder="Criar uma nota..."
-        onChange={e => setTitle(e.target.value)}
-        value={title}
+        onChange={e => setDescription(e.target.value)}
+        value={description}
       />
-      <button type="submit">+</button>
+      <button className="bg-light m-2 px-3" type="submit">
+        +
+      </button>
     </form>
   )
 }

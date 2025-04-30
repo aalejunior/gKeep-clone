@@ -1,15 +1,63 @@
-import React from "react"
+import { useState } from "react"
 
-const Card = ({ card, removeCard }) => {
+export default function Card({ card, removeCard, updateCard }) {
+  const [isEditing, setIsEditing] = useState(false)
+  const [title, setTitle] = useState(card.title)
+  const [description, setDescription] = useState(card.description)
+
+  const handleSave = () => {
+    updateCard(card.id, title, description)
+    setIsEditing(false)
+  }
+
   return (
-    <div className="card-element text-gray position-relative col-12 col-lg-3 light-border rounded-3">
-      <button className="btn-remove" onClick={() => removeCard(card.id)}>
+    <div className="card-element p-3 bg-dark text-light rounded-3 position-relative">
+      <button
+        className="btn-remove position-absolute"
+        onClick={() => removeCard(card.id)}
+      >
         ×
       </button>
-      <h4 className="card-title text-light ps-3">{card.title}</h4>
-      <p className="card-description ps-3">{card.description}</p>
+
+      {isEditing ? (
+        <>
+          <input
+            className="editable-input w-100 mb-2"
+            type="text"
+            value={title}
+            onChange={e => setTitle(e.target.value)}
+            onFocus={e => e.target.select()}
+          />
+          <textarea
+            className="editable-input w-100 mh-100 mb-2"
+            rows="4"
+            value={description}
+            onChange={e => setDescription(e.target.value)}
+          />
+          <div className="d-flex justify-content-end gap-2">
+            <button className="btn btn-sm btn-save" onClick={handleSave}>
+              Salvar
+            </button>
+            <button
+              className="btn btn-sm btn-secondary"
+              onClick={() => setIsEditing(false)}
+            >
+              Cancelar
+            </button>
+          </div>
+        </>
+      ) : (
+        <>
+          <h5 className="card-title">{card.title || "Sem título"}</h5>
+          <p className="card-description pt-1">{card.description}</p>
+          <button
+            className="btn btn-sm btn-outline-light mt-2"
+            onClick={() => setIsEditing(true)}
+          >
+            Editar
+          </button>
+        </>
+      )}
     </div>
   )
 }
-
-export default Card

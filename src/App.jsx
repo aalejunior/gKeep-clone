@@ -22,13 +22,23 @@ function App() {
     const newCards = cards.filter(card => card.id !== id)
     setCards(newCards)
   }
+  const updateCard = (id, newTitle, newDescription) => {
+    const updatedCards = cards.map(card =>
+      card.id === id
+        ? { ...card, title: newTitle, description: newDescription }
+        : card
+    )
+    setCards(updatedCards)
+  }
 
   return (
-    <div className="container row justify-content-center align-items-center">
+    <div className="container-fluid p-0">
       <CardForm addCard={addCard} />
-      <div className="d-flex justify-content-start align-items-center flex-wrap gap-3">
+      <div className="row justify-content-start gy-3">
         {cards.map(card => (
-          <Card key={card.id} card={card} removeCard={removeCard} />
+          <div key={card.id} className="col-12 col-md-6 col-lg-4">
+            <Card card={card} removeCard={removeCard} updateCard={updateCard} />
+          </div>
         ))}
       </div>
     </div>
