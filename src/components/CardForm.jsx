@@ -21,7 +21,7 @@ const CardForm = ({ addCard }) => {
       className="card-form d-flex light-border rounded-3 mb-4"
     >
       <input
-        className="ms-2 flex-grow-1 no-focus-bg py-3"
+        className="ms-2 flex-grow-1 text-light no-focus-bg py-3"
         type="text"
         placeholder="Criar uma nota..."
         onChange={e => setDescription(e.target.value)}

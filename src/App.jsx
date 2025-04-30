@@ -5,8 +5,8 @@ import CardForm from "./components/CardForm"
 
 function App() {
   const [cards, setCards] = useState(() => {
-    const storedCards = localStorage.getItem("cards")
-    return storedCards ? JSON.parse(storedCards) : []
+    const savedCards = localStorage.getItem("cards")
+    return savedCards ? JSON.parse(savedCards) : []
   })
 
   useEffect(() => {
@@ -14,23 +14,30 @@ function App() {
   }, [cards])
 
   const addCard = (title, description) => {
-    const newCard = { id: Date.now(), title, description }
+    const newCard = {
+      id: Date.now(),
+      title,
+      description,
+    }
     setCards([...cards, newCard])
   }
-
   const removeCard = id => {
-    const newCards = cards.filter(card => card.id !== id)
-    setCards(newCards)
+    const filteredCards = cards.filter(card => card.id !== id)
+    setCards(filteredCards)
   }
   const updateCard = (id, newTitle, newDescription) => {
-    const updatedCards = cards.map(card =>
-      card.id === id
-        ? { ...card, title: newTitle, description: newDescription }
-        : card
-    )
+    const updatedCards = cards.map(card => {
+      if (card.id === id) {
+        return {
+          ...card,
+          title: newTitle,
+          description: newDescription,
+        }
+      }
+      return card
+    })
     setCards(updatedCards)
   }
-
   return (
     <div className="container-fluid p-0">
       <CardForm addCard={addCard} />
