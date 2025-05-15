@@ -96,3 +96,20 @@ body {
   box-shadow: none !important;
   outline: none !important;
 }
+.masonry-grid {
+  display: flex;
+
+  width: auto;
+}
+.masonry-grid_column {
+  background-clip: padding-box;
+}
+.masonry-grid_column > * {
+  margin-bottom: 1rem;
+}
+.card-element {
+  cursor: grab;
+}
+.card-element:active {
+  cursor: grabbing;
+}

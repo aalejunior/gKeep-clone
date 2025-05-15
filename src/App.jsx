@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import "./App.css"
 import Card from "./components/Card"
 import CardForm from "./components/CardForm"
+import CardsMasonry from "./components/MansoryCard"
 
 function App() {
   const [cards, setCards] = useState(() => {
@@ -41,13 +42,11 @@ function App() {
   return (
     <div className="container-fluid p-0">
       <CardForm addCard={addCard} />
-      <div className="row justify-content-start gy-3">
-        {cards.map(card => (
-          <div key={card.id} className="col-12 col-md-6 col-lg-4">
-            <Card card={card} removeCard={removeCard} updateCard={updateCard} />
-          </div>
-        ))}
-      </div>
+      <CardsMasonry
+        cards={cards}
+        removeCard={removeCard}
+        updateCard={updateCard}
+      />
     </div>
   )
 }
