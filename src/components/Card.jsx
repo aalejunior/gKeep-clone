@@ -14,7 +14,7 @@ export default function Card({ card, removeCard, updateCard }) {
     setDescription(card.description)
     setIsEditing(false)
   }
-  const renderEditMode = () => (
+  const EditMode = () => (
     <>
       <input
         className="editable-input w-100 mb-2"
@@ -41,7 +41,7 @@ export default function Card({ card, removeCard, updateCard }) {
       </div>
     </>
   )
-  const renderReadMode = () => (
+  const ReadMode = () => (
     <>
       <h5 className="card-title">{card.title || "Sem título"}</h5>
       <p className="card-description pt-1">{card.description}</p>
@@ -54,14 +54,14 @@ export default function Card({ card, removeCard, updateCard }) {
     </>
   )
   return (
-    <div className="card-element p-3 bg-dark text-light rounded-3 position-relative">
+    <div className="card-element fade-in p-3 bg-dark text-light rounded-3 position-relative">
       <button
         className="btn-remove position-absolute"
         onClick={() => removeCard(card.id)}
       >
         ×
       </button>
-      {isEditing ? renderEditMode() : renderReadMode()}
+      {isEditing ? EditMode() : ReadMode()}
     </div>
   )
 }
